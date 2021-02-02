@@ -38,7 +38,6 @@ const ToDoPage = ({ history }: RouteComponentProps) => {
         const resp = await Service.createTodo(inputRef.current.value);
         dispatch(createTodo(resp));
         inputRef.current.value = "";
-        console.log(re);
       } catch (e) {
         if (e.response.status === 401) {
           history.push("/");
@@ -74,13 +73,14 @@ const ToDoPage = ({ history }: RouteComponentProps) => {
   });
   console.log(showTodos);
 
-  //store
-  localStorage.setItem("toDoList", JSON.stringify(showTodos));
+  //test
+  // //store
+  // localStorage.setItem("toDoList", JSON.stringify(showTodos));
 
-  //Retrieving
-  const re = localStorage.getItem("toDoList")!;
-  const item = JSON.parse(re);
-  console.log(item);
+  // //Retrieving
+  // const re = localStorage.getItem("toDoList")!;
+  // const item = JSON.parse(re);
+  // console.log(item);
 
   const activeTodos = todos.reduce(function (accum, todo) {
     return isTodoCompleted(todo) ? accum : accum + 1;
@@ -111,7 +111,7 @@ const ToDoPage = ({ history }: RouteComponentProps) => {
                   className="Todo__delete"
                   onClick={() => dispatch(deleteTodo(todo.id))}
                 >
-                  <img src="../../image/trash-alt-regular.svg" alt=""/>
+                  <img src="../../image/trash-alt-regular.svg" alt="" />
                 </button>
               </div>
             );
